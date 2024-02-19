@@ -1,0 +1,5 @@
+net/spikesync/basic/webapp/TestResource.class
+net/spikesync/basic/webapp/DbPool.class
+net/spikesync/basic/webapp/RestfulApplication.class
+net/spikesync/basic/webapp/UserServlet.class
+net/spikesync/basic/webapp/StartupListener.class
