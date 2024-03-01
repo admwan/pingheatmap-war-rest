@@ -5,26 +5,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ch.eitchnet</groupId>
-	<artifactId>basic-webapp</artifactId>
+	<groupId>net.spikesync</groupId>
+	<artifactId>pingheatmap-war-rest</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>webapp</name>
+	<name>pingheatmap-war-rest</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
-	<!--
-    <scm>
-        <connection>scm:git:git@github.com:eitch/simple-webapp.git</connection>
-	<developerConnection>scm:git:git@github.com:eitch/simple-webapp.git</developerConnection>
-        <url>https://github.com/eitch/simple-webapp</url>
-    </scm>
--->
 
 	<scm>
-		<connection>scm:git:git@github.com:admwan/basic-webapp.git</connection>
-		<developerConnection>scm:git:git@github.com:admwan/basic-webapp.git</developerConnection>
-		<url>https://github.com/admwan/basic-webapp</url>
+		<connection>scm:git:git@github.com:admwan/pingheatmap-war-rest.git</connection>
+		<developerConnection>
+			scm:git:git@github.com:admwan/pingheatmap-war-rest.git</developerConnection>
+		<url>https://github.com/admwan/pingheatmap-war-rest</url>
 	</scm>
 
 	<licenses>
@@ -39,16 +33,16 @@
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 		<buildTimestamp>${maven.build.timestamp}</buildTimestamp>
 
-		<jdk.version>11</jdk.version>
-
-		<appFinalName>basic-webapp</appFinalName>
+		<jdk.version>21</jdk.version>
+		<appFinalName>pingheatmap-war-rest</appFinalName>
+		<spring.version>6.0.11</spring.version>
 
 		<tomcat7Url>http://localhost:8080/manager/text</tomcat7Url>
 		<tomcat7ServerId>tomcat.local</tomcat7ServerId>
 
 		<!-- compile time dependencies -->
 		<slf4j.version>1.7.30</slf4j.version>
-		<logback.version>1.3.12</logback.version>
+		<logback.version>1.4.11</logback.version>
 		<jersey.version>2.31</jersey.version>
 		<gson.version>2.8.9</gson.version>
 		<hikaricp.version>3.4.5</hikaricp.version>
@@ -127,6 +121,11 @@
 				<scope>runtime</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<!-- Database -->
 			<dependency>
 				<groupId>com.zaxxer</groupId>
@@ -249,52 +248,73 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.3.12</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.30</version>
 		</dependency>
 
 		<!-- web -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.bundles</groupId>
 			<artifactId>jaxrs-ri</artifactId>
-			<version>2.31</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
-			<version>3.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.6.jre7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.8.9</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Hieronder staan TWEE dependencies die nodig zijn om een verbinding 
+		te maken met een RabbitMQ server Dit zijn andere dependencies dan in de POM 
+		met Spring-Boot!! -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.7.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>3.0.9</version>
+		</dependency>
+
+		<!--
+		https://mvnrepository.com/artifact/org.springframework.amqp/spring-rabbit-test -->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit-test</artifactId>
+			<version>3.0.8</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
