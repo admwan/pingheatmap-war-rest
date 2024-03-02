@@ -1,7 +1,7 @@
 package net.spikesync.basic.webapp;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 
 import net.spikesync.pingerdaemonrabbitmqclient.PingMsgReader;
 import net.spikesync.pingerdaemonrabbitmqclient.PingMsgReaderThread;

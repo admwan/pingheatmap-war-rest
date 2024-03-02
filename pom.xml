@@ -152,12 +152,17 @@
 				<artifactId>javax.annotation-api</artifactId>
 				<version>${annotation.version}</version>
 			</dependency>
-			<dependency>
+			
+			
+<!--		javax.servlet is superseded by jakarta.servlet in Tomcat 10 added dependency in <dependencies/>
+	<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${serverlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			-->
+			
 			<dependency>
 				<groupId>javax.ws.rs</groupId>
 				<artifactId>javax.ws.rs-api</artifactId>
@@ -214,7 +219,7 @@
 			<dependency>
 				<groupId>jakarta.servlet</groupId>
 				<artifactId>jakarta.servlet-api</artifactId>
-				<version>6.0.0</version>
+				<version>6.1.0-M2</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -262,11 +267,19 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 
-		<!-- web -->
+		<!-- web 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
+		-->
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+<dependency>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <scope>provided</scope>
+</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.bundles</groupId>
 			<artifactId>jaxrs-ri</artifactId>
