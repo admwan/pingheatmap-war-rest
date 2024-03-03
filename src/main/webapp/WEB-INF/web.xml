@@ -6,11 +6,12 @@
 
 	<display-name>PingHeatmap WAR REST service</display-name>
 
-
+<!-- 
 	<listener>
 		<listener-class>net.spikesync.basic.webapp.PingHeatAppThreadContextListener</listener-class>
 	</listener>
-
+ -->
+ 
 	<servlet>
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>net.spikesync.basic.webapp.UserServlet</servlet-class>
