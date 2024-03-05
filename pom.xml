@@ -103,12 +103,24 @@
 	<dependencyManagement>
 		<dependencies>
 
+			<!-- Jakarta BOM added by @FW 4-3-2024 -->
+			<!--
+			https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-bom -->
+			<dependency>
+				<groupId>jakarta.platform</groupId>
+				<artifactId>jakarta.jakartaee-bom</artifactId>
+				<version>9.1.0</version>
+				<type>pom</type>
+			</dependency>
+
 			<!-- Miscellaneous -->
+			<!-- 
 			<dependency>
 				<groupId>javax.xml.bind</groupId>
 				<artifactId>jaxb-api</artifactId>
 				<version>${jaxb.api.version}</version>
 			</dependency>
+			-->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -146,28 +158,6 @@
 				<version>${gson.version}</version>
 			</dependency>
 
-			<!-- Web -->
-			<dependency>
-				<groupId>javax.annotation</groupId>
-				<artifactId>javax.annotation-api</artifactId>
-				<version>${annotation.version}</version>
-			</dependency>
-			
-			
-<!--		javax.servlet is superseded by jakarta.servlet in Tomcat 10 added dependency in <dependencies/>
-	<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${serverlet.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			-->
-			
-			<dependency>
-				<groupId>javax.ws.rs</groupId>
-				<artifactId>javax.ws.rs-api</artifactId>
-				<version>${jaxrs.api.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.glassfish.jersey</groupId>
 				<artifactId>jersey-bom</artifactId>
@@ -176,14 +166,14 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- websocket -->
+			<!-- websocket 
 			<dependency>
 				<groupId>javax.websocket</groupId>
 				<artifactId>javax.websocket-api</artifactId>
 				<version>${websocket.version}</version>
 				<scope>provided</scope>
 			</dependency>
-
+-->
 			<!-- test -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -204,14 +194,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Servlet dependency 
-			<dependency>
-				<groupId>jakarta.servlet</groupId>
-				<artifactId>jakarta.servlet-api</artifactId>
-				<version>5.0.0</version>
-				<scope>provided</scope>
-			</dependency>
--->
 
 			<!-- dependencies according to
 			https://stackoverflow.com/questions/65703840/how-to-properly-configure-jakarta-ee-libraries-in-maven-pom-xml-for-tomcat -->
@@ -234,6 +216,22 @@
 				<version>5.0.0</version>
 				<scope>provided</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>jakarta.servlet.jsp.jstl</groupId>
+				<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+				<version>3.0.0</version>
+				<!--		<scope>provided</scope>  -->
+			</dependency>
+
+			<!-- Below is supposed to be the IMPLEMENTATION of the JSTL API -->
+
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+
 			<dependency>
 				<groupId>jakarta.websocket</groupId>
 				<artifactId>jakarta.websocket-api</artifactId>
@@ -273,12 +271,13 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 		-->
-		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-<dependency>
-    <groupId>jakarta.servlet</groupId>
-    <artifactId>jakarta.servlet-api</artifactId>
-    <scope>provided</scope>
-</dependency>
+		<!--
+		https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.jersey.bundles</groupId>

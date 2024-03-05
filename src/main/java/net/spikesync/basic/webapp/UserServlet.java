@@ -3,6 +3,7 @@ package net.spikesync.basic.webapp;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -51,6 +52,17 @@ public class UserServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>Area of the rectangle is: " + area + "</html>");
 		writer.flush();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+		System.out.println("Now in UserServlet.doPost with dispatcher toString: " + dispatcher.toString());
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	@Override
